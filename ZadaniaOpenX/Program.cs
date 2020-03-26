@@ -8,7 +8,7 @@ using ZadaniaOpenX.Data.Models;
 
 namespace ZadaniaOpenX
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -18,6 +18,7 @@ namespace ZadaniaOpenX
             ClosestUser();
         }
 
+        //1 pobieram dane z plików "JSON" 2 method
         public static List<User> DeserealizeUser()
         {
             string userJson = File.ReadAllText(@"C:\Users\Admin\source\repos\ZadaniaOpenX\ZadaniaOpenX\Data\JSON\Users.json");
@@ -34,6 +35,7 @@ namespace ZadaniaOpenX
             return restoredPost;
         }
 
+        //2 licze posty, oraz zwracam usera i odpowiednią ilość postów (2 - methods)
         public static void CountPost()
         {
             var restoredPost = DeserealizePost();
@@ -50,6 +52,7 @@ namespace ZadaniaOpenX
             Console.ReadLine();
         }
 
+        //3 sprawdzam czy tytuły postów są unikalne i zwracam listę tytułów które nie są
         public static void CheckRepeatTitlePost()
         {
             var restoredPost = DeserealizePost();
@@ -69,6 +72,7 @@ namespace ZadaniaOpenX
             Console.ReadLine();
         }
 
+        //4 dla każdego użytkownika szukam innego użytkownika, który mieszka najbliżej niego
         static void ClosestUser()
         {
             var restoredUser = DeserealizeUser();
