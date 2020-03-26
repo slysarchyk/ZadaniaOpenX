@@ -83,7 +83,7 @@ namespace ZadaniaOpenX
                 Console.WriteLine($"{geoitem.UserName}`s address is in coordinates: Lat - {geoitem.Address.Geo.Lat}, Lng - {geoitem.Address.Geo.Lng}");
                 GeoCoordinate geoUser = new GeoCoordinate(geoitem.Address.Geo.Lat, geoitem.Address.Geo.Lng);
 
-                var minDistance = restoredUser.Select(x => new { Coor = new GeoCoordinate(x.Address.Geo.Lat, x.Address.Geo.Lng), Username = x.UserName }).
+                var minDistance = restoredUser.Select(x => new { Coor = new GeoCoordinate(x.Address.Geo.Lat, x.Address.Geo.Lng)}).
                     Where(x => geoUser.GetDistanceTo(x.Coor) > 0).
                     Min(x => geoUser.GetDistanceTo(x.Coor) / 1000);
 
