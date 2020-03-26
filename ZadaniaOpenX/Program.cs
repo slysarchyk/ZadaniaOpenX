@@ -18,7 +18,7 @@ namespace ZadaniaOpenX
             ClosestUser();
         }
 
-        static List<User> DeserealizeUser()
+        public static List<User> DeserealizeUser()
         {
             string userJson = File.ReadAllText(@"C:\Users\Admin\source\repos\ZadaniaOpenX\ZadaniaOpenX\Data\JSON\Users.json");
             List<User> restoredUser = JsonConvert.DeserializeObject<List<User>>(userJson);
@@ -26,7 +26,7 @@ namespace ZadaniaOpenX
             return restoredUser;
         }
 
-        static List<Post> DeserealizePost()
+        public static List<Post> DeserealizePost()
         {
             string postJson = File.ReadAllText(@"C:\Users\Admin\source\repos\ZadaniaOpenX\ZadaniaOpenX\Data\JSON\Posts.json");
             List<Post> restoredPost = JsonConvert.DeserializeObject<List<Post>>(postJson);
@@ -34,13 +34,13 @@ namespace ZadaniaOpenX
             return restoredPost;
         }
 
-        static void CountPost()
+        public static void CountPost()
         {
             var restoredPost = DeserealizePost();
             Console.WriteLine($"{restoredPost.Count()} - posts have been written");
         }
 
-        static void UserWritePost()
+        public static void UserWritePost()
         {
             var restoredUser = DeserealizeUser();
             var restoredPost = DeserealizePost();
@@ -50,7 +50,7 @@ namespace ZadaniaOpenX
             Console.ReadLine();
         }
 
-        static void CheckRepeatTitlePost()
+        public static void CheckRepeatTitlePost()
         {
             var restoredPost = DeserealizePost();
 
