@@ -4,22 +4,15 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using ZadaniaOpenX.Data.Models;
 
 namespace ZadaniaOpenX
 {
-    class Program
+    class Zadania
     {
-        static void Main(string[] args)
-        {
-            CountPost();
-            UserWritePost();
-            CheckRepeatTitlePost();
-            ClosestUser();
-        }
-
         //1 pobieram dane z plików "JSON" 2 method
-        public static List<User> DeserealizeUser()
+        public List<User> DeserealizeUser()
         {
             string userJson = File.ReadAllText(@"C:\Users\Admin\source\repos\ZadaniaOpenX\ZadaniaOpenX\Data\JSON\Users.json");
             List<User> restoredUser = JsonConvert.DeserializeObject<List<User>>(userJson);
@@ -27,7 +20,7 @@ namespace ZadaniaOpenX
             return restoredUser;
         }
 
-        public static List<Post> DeserealizePost()
+        public List<Post> DeserealizePost()
         {
             string postJson = File.ReadAllText(@"C:\Users\Admin\source\repos\ZadaniaOpenX\ZadaniaOpenX\Data\JSON\Posts.json");
             List<Post> restoredPost = JsonConvert.DeserializeObject<List<Post>>(postJson);
@@ -36,14 +29,14 @@ namespace ZadaniaOpenX
         }
 
         //2 licze posty, oraz zwracam usera i odpowiednią ilość postów (2 - methods)
-        public static void CountPost()
+        public void CountPost()
         {
             var restoredPost = DeserealizePost();
             Console.WriteLine($"{restoredPost.Count()} - posts have been written");
             Console.WriteLine();
         }
 
-        public static void UserWritePost()
+        public void UserWritePost()
         {
             var restoredUser = DeserealizeUser();
             var restoredPost = DeserealizePost();
@@ -54,7 +47,7 @@ namespace ZadaniaOpenX
         }
 
         //3 sprawdzam czy tytuły postów są unikalne i zwracam listę tytułów które nie są
-        public static void CheckRepeatTitlePost()
+        public void CheckRepeatTitlePost()
         {
             var restoredPost = DeserealizePost();
 
@@ -74,7 +67,7 @@ namespace ZadaniaOpenX
         }
 
         //4 dla każdego użytkownika szukam innego użytkownika, który mieszka najbliżej niego
-        static void ClosestUser()
+        public void ClosestUser()
         {
             var restoredUser = DeserealizeUser();
 
