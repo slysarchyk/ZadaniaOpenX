@@ -77,7 +77,7 @@ namespace ZadaniaOpenX
             return reapetItem.Count;
         }
 
-        //4 dla każdego użytkownika szukam innego użytkownika, który mieszka najbliżej niego
+        //4 dla każdego użytkownika szukam innego użytkownika, który mieszka najbliżej niego, zwracam odleglość
         static void ClosestUser()
         {
             var restoredUser = DeserealizeUser();
