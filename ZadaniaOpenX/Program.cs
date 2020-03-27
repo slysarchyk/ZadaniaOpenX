@@ -8,7 +8,7 @@ using ZadaniaOpenX.Data.Models;
 
 namespace ZadaniaOpenX
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -16,6 +16,8 @@ namespace ZadaniaOpenX
             UserWritePost();
             CheckRepeatTitlePost();
             ClosestUser();
+
+            Console.ReadLine();
         }
 
         //1 pobieram dane z plików "JSON" 2 method
@@ -36,11 +38,13 @@ namespace ZadaniaOpenX
         }
 
         //2 licze posty, oraz zwracam usera i odpowiednią ilość postów (2 - methods)
-        public static void CountPost()
+        public static int CountPost()
         {
             var restoredPost = DeserealizePost();
             Console.WriteLine($"{restoredPost.Count()} - posts have been written");
-            Console.WriteLine();
+
+            //zwruciłem ilość userów ze by napisać UnitTest, nie jest to konieczne  
+            return restoredPost.Count;
         }
 
         public static void UserWritePost()
@@ -50,11 +54,10 @@ namespace ZadaniaOpenX
 
             foreach (var item in restoredUser)
                 Console.WriteLine($"{item.UserName} - write - {restoredPost.Count(x => x.UserId == item.Id)} posts");
-            Console.ReadLine();
         }
 
         //3 sprawdzam czy tytuły postów są unikalne i zwracam listę tytułów które nie są
-        public static void CheckRepeatTitlePost()
+        public static int CheckRepeatTitlePost()
         {
             var restoredPost = DeserealizePost();
 
@@ -70,7 +73,8 @@ namespace ZadaniaOpenX
             }
             else
                 Console.WriteLine("No repeating Titles");
-            Console.ReadLine();
+
+            return reapetItem.Count;
         }
 
         //4 dla każdego użytkownika szukam innego użytkownika, który mieszka najbliżej niego
@@ -89,7 +93,6 @@ namespace ZadaniaOpenX
 
                 Console.WriteLine($"User short distance {minDistance}");
             }
-            Console.ReadLine();
         }
     }
 }
